@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gotta Catch'em All</title>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+
+
+                $.get("https://pokeapi.co/api/v2/pokemon/2/", function(res) {
+                    console.log(res);
+
+                    console.log(res.moves);
+
+                    $("#bulbasaur").html(res.name);
+
+                    var html = "<ul>";
+
+                    for (const peliculas of res.moves) {
+
+                        console.log(peliculas.move.name);
+                        html += "<li> " + peliculas.move.name + " </li>";
+
+                    }
+
+                    html += "</ul>";
+
+                    $("#bulbasaur").append(html);
+
+
+                }, "json");
+
+                
+            })
+        </script>
+    </head>
+    <body>
+        <div id="bulbasaur">
+        </div>
+    </body>
+</html>
